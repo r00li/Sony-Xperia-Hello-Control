@@ -83,18 +83,21 @@ Otherwise the robot gets controlled by very standard serial protocol. And what m
 This one is the most simple command since it just takes one value:
 
 `:LED2<rgbColor>\r\n`
+
 Simply replace the `<rgbColor>`with a HEX color string and send it to the robot. The color of the LED neck ring should change to what you specified.
 
 ### Eye LEDs
 This one is quite simple as well. Each eye is represented by 5 different LED lights. Each eye is represented by one byte, where each bit controls one of the LEDs.
 
 `:LED4<leftValue><rightValue>\r\n`
+
 Simply replace `<leftValue>` and `<rightValue>` with 1 byte each representing the state of the LEDs.
 
 ### Motors
 This one is more complicated...
 
 `:P2P<motor><sign><newPosition><speed>\r\n` 
+
 The `<motor>`part is the number of the motor you want to control: `0: Tilt, 1: Pan, 2: Body`.
 The second part is the `<sign>`, which is basically up/down, left/right. It is either `0` or `F`.
 The rest are more complicated and I suggest you check out the included android code for more details. For speed I recommend using `1F40` for now. It seems to be a good default value that works for the whole range of motion.
